@@ -1,11 +1,17 @@
 const menuBtn = document.getElementById("menuBtn");
 const navMenu = document.getElementById("nav-menu");
 
-menuBtn.addEventListener("click", () => {
+menuBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
   navMenu.classList.toggle("active");
   console.log("click hoice");
 });
-
+/* Click outside = close menu */
+document.addEventListener("click", (e) => {
+  if (navMenu.classList.contains("active") && !navMenu.contains(e.target)) {
+    navMenu.classList.remove("active");
+  }
+});
 // Scroll Animation
 
 const cards = document.querySelectorAll(
